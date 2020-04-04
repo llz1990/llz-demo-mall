@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <nav-bar class="nav-home">
-      <div slot="center">购物车</div>
+      <div slot="center">首页</div>
     </nav-bar>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
       this.banners = res.data.banner.list;
       this.recommends = res.data.recommend.list;
     })
-  }
+  },
 }
 </script>
 
