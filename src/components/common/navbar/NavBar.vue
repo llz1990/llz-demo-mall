@@ -11,6 +11,7 @@ export default {
 }
 </script>
 <style scoped>
+/* 将导航栏的样式确定 */
 .nav-bar{
     display: flex;
     /* 每个字间隔高 */

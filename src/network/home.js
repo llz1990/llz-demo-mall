@@ -1,7 +1,19 @@
-import request from '../network/request';
+import { request } from '../network/request';
 
-export function getMultiData () {
-    return request({
-      url: '/home/multidata'
-    })
-  }
+function getMultiData() {
+  return request({
+    url: '/home/multidata'
+  })
+}
+
+function getGoodsData(type, page) {
+  return request({
+    url: '/home/data',
+    params: {
+      type,
+      page
+    }
+  })
+}
+
+export { getMultiData, getGoodsData }
