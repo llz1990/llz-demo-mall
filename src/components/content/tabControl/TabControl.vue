@@ -23,7 +23,8 @@ export default {
   },
   methods: {
       itemClick(index) {
-          this.currentIndex = index;
+          this.currentIndex = index;    // 点击事件时候，当前currentIndex 的值为点击的序列，此时可以变成红色
+          this.$emit("tabClick", index);   // 同时出发 tabClick 事件；
       }
   }
 };

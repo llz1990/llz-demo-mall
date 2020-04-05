@@ -10,8 +10,8 @@
     <recommend-view :recommends="recommends"></recommend-view>
     <!-- 本周流行 -->
     <feature-view></feature-view>
-    <tab-control class="tab-control"></tab-control>
-    <goods-list :goods = "showGoodsList"></goods-list>
+    <tab-control class="tab-control" @tabClick="tabClick"></tab-control>
+    <goods-list :goods="showGoodsList"></goods-list>
   </div>
 </template>
 <script>
@@ -37,11 +37,11 @@ export default {
       banners: [],
       recommends: [],
       goods: {
-        "pop": { page: 1, list: [] },
-        "new": { page: 1, list: [] },
-        "sell": { page: 1, list: [] }
+        pop: { page: 1, list: [] },
+        new: { page: 1, list: [] },
+        sell: { page: 1, list: [] }
       },
-      currentType: "pop",   // 初始化的时候是 pop（流行） 栏
+      currentType: "pop" // 初始化的时候是 pop（流行） 栏
     };
   },
   computed: {
@@ -55,9 +55,9 @@ export default {
     this._getMultiData();
 
     // 请求商品数据
-    this._getGoodsData('pop');
-    this._getGoodsData('new');
-    this._getGoodsData('sell');
+    this._getGoodsData("pop");
+    this._getGoodsData("new");
+    this._getGoodsData("sell");
   },
   methods: {
     _getMultiData() {
@@ -71,13 +71,28 @@ export default {
     },
 
     _getGoodsData(type) {
-      let page = this.goods[type].page;  // 获取当前的页码数目
+      let page = this.goods[type].page; // 获取当前的页码数目
       getGoodsData(type, page).then(res => {
         let listInfo = res.data.list;
-        console.log('lisInfo', listInfo);
-        this.goods[type].list.push(...listInfo)
-        this.goods[type].page += 1
-      })
+        console.log("lisInfo", listInfo);
+        this.goods[type].list.push(...listInfo);
+        this.goods[type].page += 1;
+      });
+    },
+
+    // 监听到事件
+    tabClick(index) {
+      switch (index) {
+        case 0:
+          this.currentType = "pop";
+          break;
+        case 1:
+          this.currentType = "new";
+          break;
+        case 2:
+          this.currentType = "sell";
+          break;
+      }
     }
   }
 };
