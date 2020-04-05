@@ -45,6 +45,7 @@ export default {
     };
   },
   computed: {
+    // 计算属性不要写在 data 中
     showGoodsList() {
       return this.goods[this.currentType].list;
     }
@@ -100,5 +101,6 @@ export default {
 .tab-control {
   position: sticky;
   top: 44px;
+  z-index: 10;
 }
 </style>
