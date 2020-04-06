@@ -4,14 +4,17 @@
     <nav-bar class="nav-home">
       <div slot="center">购物街</div>
     </nav-bar>
-    <!-- 轮播图展示 -->
-    <home-swiper :banners="banners"></home-swiper>
-    <!-- 提示信息展示 -->
-    <recommend-view :recommends="recommends"></recommend-view>
-    <!-- 本周流行 -->
-    <feature-view></feature-view>
-    <tab-control class="tab-control" @tabClick="tabClick"></tab-control>
-    <goods-list :goods="showGoodsList"></goods-list>
+    <!-- 部分展示在scroll 里面 -->
+    <my-scroll ref="scroll">
+      <!-- 轮播图展示 -->
+      <home-swiper :banners="banners"></home-swiper>
+      <!-- 提示信息展示 -->
+      <recommend-view :recommends="recommends"></recommend-view>
+      <!-- 本周流行 -->
+      <feature-view></feature-view>
+      <tab-control class="tab-control" @tabClick="tabClick"></tab-control>
+      <goods-list :goods="showGoodsList"></goods-list>
+    </my-scroll>
   </div>
 </template>
 <script>
@@ -22,6 +25,7 @@ import RecommendView from "../home/childComps/RecommendView";
 import FeatureView from "../home/childComps/FeatureView";
 import TabControl from "../../components/content/tabControl/TabControl";
 import GoodsList from "../../components/content/goods/GoodsList";
+import Scroll from "../../components/common/scroll/Scroll";
 export default {
   name: "Home",
   components: {
@@ -30,7 +34,8 @@ export default {
     "recommend-view": RecommendView,
     "feature-view": FeatureView,
     "tab-control": TabControl,
-    "goods-list": GoodsList
+    "goods-list": GoodsList,
+    "my-scroll": Scroll
   },
   data() {
     return {
