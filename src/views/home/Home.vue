@@ -15,6 +15,8 @@
       <tab-control class="tab-control" @tabClick="tabClick"></tab-control>
       <goods-list :goods="showGoodsList"></goods-list>
     </my-scroll>
+    <!-- 组件直接监听事件必须用 native -->
+    <back-top @click.native="backTop()"></back-top>
   </div>
 </template>
 <script>
@@ -26,6 +28,7 @@ import FeatureView from "../home/childComps/FeatureView";
 import TabControl from "../../components/content/tabControl/TabControl";
 import GoodsList from "../../components/content/goods/GoodsList";
 import Scroll from "../../components/common/scroll/Scroll";
+import BackTop from "../../components/content/backTop/BackTop";
 export default {
   name: "Home",
   components: {
@@ -35,7 +38,8 @@ export default {
     "feature-view": FeatureView,
     "tab-control": TabControl,
     "goods-list": GoodsList,
-    "my-scroll": Scroll
+    "my-scroll": Scroll,
+    "back-top": BackTop
   },
   data() {
     return {
@@ -98,6 +102,11 @@ export default {
           this.currentType = "sell";
           break;
       }
+    },
+
+    backTop() {
+      console.log(this.$refs.scroll.scroll);
+      this.$refs.scroll.scrollTo(0, 0, 1000);    // 取到Scroll组件后，直接取滚动方法
     }
   }
 };

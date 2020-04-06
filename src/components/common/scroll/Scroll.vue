@@ -21,7 +21,12 @@ export default {
       this.scroll = new BScroll(this.$refs.wrapper, {});
     });
   },
-  methods: {}
+  methods: {
+    // 封装滚到顶部的方法：
+    scrollTo(x, y, time = 500) {
+      this.scroll.scrollTo(x, y, time);
+    }
+  }
 };
 </script>
 
