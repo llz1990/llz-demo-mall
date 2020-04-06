@@ -1,4 +1,5 @@
 <template>
+<!-- 通过绑定 ref 可以获取组件对象; 不单单用于子组件传参 -->
   <div ref="wrapper" class="wrapper">
     <div class="content">
       <slot></slot>
@@ -25,7 +26,4 @@ export default {
 </script>
 
 <style scoped>
-.wrapper{
-  height: 600px;
-}
 </style>

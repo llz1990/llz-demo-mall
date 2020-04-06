@@ -5,7 +5,7 @@
       <div slot="center">购物街</div>
     </nav-bar>
     <!-- 部分展示在scroll 里面 -->
-    <my-scroll ref="scroll">
+    <my-scroll ref="scroll" class="content">
       <!-- 轮播图展示 -->
       <home-swiper :banners="banners"></home-swiper>
       <!-- 提示信息展示 -->
@@ -105,7 +105,9 @@ export default {
 
 <style scoped>
 #home {
-  padding-top: 44px;
+  /* 视口高度表示 100% */
+  height: 100vh;
+  position: relative;
 }
 /* 此处只是当前界面取红色背景 */
 .nav-home {
@@ -122,5 +124,13 @@ export default {
   position: sticky;
   top: 44px;
   z-index: 10;
+}
+.content{
+  height: calc(100% - 94px);
+  overflow: hidden;
+  /* 把滚动栏设置为绝对定位，就不用 overflow: hidden， #home 为相对定位 */
+  position: absolute;
+  top: 44px;
+  bottom: 49px;
 }
 </style>
