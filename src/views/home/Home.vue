@@ -123,6 +123,7 @@ export default {
 
     loadMore() {
       this._getGoodsData(this.currentType);
+      this.$refs.scroll.refresh();
     }
   }
 };

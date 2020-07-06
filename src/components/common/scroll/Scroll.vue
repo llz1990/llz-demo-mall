@@ -59,6 +59,10 @@ export default {
     finishPullUp() {
       this.scroll.finishPullUp();
     },
+    // 刷新
+    refresh() {
+      this.scroll.refresh();
+    }
   }
 };
 </script>
